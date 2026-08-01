@@ -1,0 +1,9 @@
+{
+  "name": "bond-api-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Proxy that hides the Supabase URL/key behind a custom domain",
+  "engines": {
+    "node": ">=18"
+  }
+}
