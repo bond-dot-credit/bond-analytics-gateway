@@ -28,6 +28,18 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing table name in URL, e.g. /api/agent_leaderboard_genesis' });
   }
 
+  // Only expose the tables this proxy is meant to serve
+  const ALLOWED_TABLES = [
+    'agent_leaderboard',
+    'agent_leaderboard_genesis',
+    'yield_historical',
+    'yield_historical_genesis',
+  ];
+
+  if (!ALLOWED_TABLES.includes(table)) {
+    return res.status(403).json({ error: `Table '${table}' is not exposed by this proxy` });
+  }
+
   // Rebuild the query string, forwarding everything the client sent
   // (filters, select, order, limit, etc. — all standard PostgREST params work)
   const params = new URLSearchParams(query);
