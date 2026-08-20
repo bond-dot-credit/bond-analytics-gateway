@@ -29,6 +29,19 @@ gets forwarded as:
 https://xurzcnthfpzihylgcnly.supabase.co/rest/v1/agent_leaderboard_genesis?select=*&order=score.desc&limit=10
 ```
 
+## Available endpoints
+
+The proxy only exposes these tables (`api/[table].js`):
+
+| Endpoint | Supabase table |
+|---|---|
+| `/api/agent_leaderboard` | `agent_leaderboard` |
+| `/api/agent_leaderboard_genesis` | `agent_leaderboard_genesis` |
+| `/api/yield_historical` | `yield_historical` |
+| `/api/yield_historical_genesis` | `yield_historical_genesis` |
+
+Requests to any other table name return `403`.
+
 ## 1. Push to GitHub
 
 ```bash
